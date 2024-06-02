@@ -1,4 +1,4 @@
-# LeeWick
+# Lee-Wick project
 Quasi-normal modes computation for Lee-Wick black holes
 
 **Authors**: Dr. Davide Batic (KU, UAE), Dr. Denys Dutykh (KU, UAE), and Breno Giacchini (CU, CZ)
