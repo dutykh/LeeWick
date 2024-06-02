@@ -11,4 +11,4 @@ This repository contains the computational supplemental materials for the follow
 
 **Reference**: D. Batic, D. Dutykh & G.L. Giacchini. *A Unified Spectral Approach for Quasinormal Modes of Lee-Wick Black Holes*. Submitted, 2024
 
-Please acknowledge this work if you use these codes.
+**NB**: Please acknowledge this work if you use these codes.
