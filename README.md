@@ -9,6 +9,6 @@ Quasi-normal modes computation for Lee-Wick black holes
 
 This repository contains the computational supplemental materials for the following scientific paper:
 
-**Reference**: D. Batic, D. Dutykh & G.L. Giacchini. *A Unified Spectral Approach for Quasinormal Modes of Lee-Wick Black Holes*. Submitted, 2024
+**Reference**: D. Batic, D. Dutykh & G.L. Giacchini. *A Unified Spectral Approach for Quasinormal Modes of Lee-Wick Black Holes*. Phys. Rev. D, **110**, 084032, 2024
 
 **NB**: Please acknowledge this work if you use these codes.
