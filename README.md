@@ -1,9 +1,14 @@
 # Quasinormal Modes of Lee-Wick Black Holes
 
-[![arXiv](https://img.shields.io/badge/arXiv-2410.13245-b31b1b.svg)](https://arxiv.org/abs/2410.13245)
-[![DOI](https://img.shields.io/badge/DOI-10.1103%2FPhysRevD.110.084032-0053a0.svg)](https://doi.org/10.1103/PhysRevD.110.084032)
-[![License: LGPL v2.1](https://img.shields.io/badge/License-LGPL%20v2.1-green.svg)](LICENSE)
-[![QNMs Hall of Fame](https://img.shields.io/badge/QNMs-Hall%20of%20Fame-6a1b9a.svg)](https://qnms.denys-dutykh.com/)
+[![Phys. Rev. D](https://img.shields.io/badge/Phys.%20Rev.%20D-110%20%282024%29%20084032-005a9c)](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.084032)
+[![DOI](https://img.shields.io/badge/DOI-10.1103%2FPhysRevD.110.084032-1a7f37)](https://doi.org/10.1103/PhysRevD.110.084032)
+[![arXiv](https://img.shields.io/badge/arXiv-2410.13245-b31b1b)](https://arxiv.org/abs/2410.13245)
+[![License: LGPL v2.1](https://img.shields.io/badge/License-LGPL%20v2.1-4c1)](LICENSE)
+[![Maple](https://img.shields.io/badge/Maple-18%2B-ff6f00)](https://www.maplesoft.com/products/Maple/)
+[![MATLAB](https://img.shields.io/badge/MATLAB-polyeig-0076a8)](https://www.mathworks.com/help/matlab/ref/polyeig.html)
+[![QNMs Hall of Fame](https://img.shields.io/badge/QNMs-Hall%20of%20Fame-8a2be2)](https://qnms.denys-dutykh.com/)
+[![GitHub](https://img.shields.io/badge/GitHub-dutykh%2FLeeWick-181717?logo=github)](https://github.com/dutykh/LeeWick)
+[![Last commit](https://img.shields.io/github/last-commit/dutykh/LeeWick)](https://github.com/dutykh/LeeWick/commits/main)
 
 Computational supplementary material for the study of quasinormal modes (QNMs) of
 Lee-Wick black holes by a unified spectral method. The codes assemble and solve the
