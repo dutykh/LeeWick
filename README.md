@@ -119,7 +119,8 @@ files. The type A procedure searches 0.1 ⩽ x_e ⩽ 1 and 5 ⩽ α ⩽ 5.5, the
 stops unless it finds the values of q = 2 (x_e = 0.62987, α = 5.18635, x_h = 1.040133223, to 10⁻⁴): it serves q = 2
 only. The type B procedure searches 0.5 ⩽ x_e ⩽ 0.8 and 4.9 ⩽ α ⩽ 5.5, which encloses the extremal black hole of
 q = 0.1 (x_e = 0.65978, α = 5.08671); the other type B cases of the article (q = 0.5 and 1, and q = 2 at α = 0.69098 or
-4.04733) need these intervals edited to enclose their double root, given in Table I of the article. For q = 2 the
+4.04733) need these intervals edited to enclose their double root (the values of α are in Table I of the article, those
+of x_e in the caption of its Fig. 1). For q = 2 the
 distributed intervals enclose the inner double root of the type A black hole, which is not an event horizon.
 
 ## Contents
