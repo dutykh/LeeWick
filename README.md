@@ -1,196 +1,183 @@
-# Quasinormal Modes of Lee-Wick Black Holes
+<!-- Author: Dr. Denys Dutykh (Mathematics Department, Khalifa University of Science and Technology, Abu Dhabi, UAE) -->
 
-[![Phys. Rev. D](https://img.shields.io/badge/Phys.%20Rev.%20D-110%20%282024%29%20084032-005a9c)](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.084032)
-[![DOI](https://img.shields.io/badge/DOI-10.1103%2FPhysRevD.110.084032-1a7f37)](https://doi.org/10.1103/PhysRevD.110.084032)
-[![arXiv](https://img.shields.io/badge/arXiv-2410.13245-b31b1b)](https://arxiv.org/abs/2410.13245)
-[![License: LGPL v2.1](https://img.shields.io/badge/License-LGPL%20v2.1-4c1)](LICENSE)
-[![Maple](https://img.shields.io/badge/Maple-18%2B-ff6f00)](https://www.maplesoft.com/products/Maple/)
-[![MATLAB](https://img.shields.io/badge/MATLAB-polyeig-0076a8)](https://www.mathworks.com/help/matlab/ref/polyeig.html)
-[![QNMs Hall of Fame](https://img.shields.io/badge/QNMs-Hall%20of%20Fame-8a2be2)](https://qnms.denys-dutykh.com/)
-[![GitHub](https://img.shields.io/badge/GitHub-dutykh%2FLeeWick-181717?logo=github)](https://github.com/dutykh/LeeWick)
-[![Last commit](https://img.shields.io/github/last-commit/dutykh/LeeWick)](https://github.com/dutykh/LeeWick/commits/main)
+# LeeWick: quasinormal modes of Lee–Wick black holes by a Chebyshev spectral method
 
-Computational supplementary material for the study of quasinormal modes (QNMs) of
-Lee-Wick black holes by a unified spectral method. The codes assemble and solve the
-quadratic eigenvalue problem that governs scalar, electromagnetic and gravitational
-perturbations of these geometries, covering non-extremal, extremal and near-extremal
-horizon configurations within a single framework.
+![The lapse function of Lee–Wick black holes at their extremal configurations](docs/figures/leewick-lapse.png)
 
-Repository: <https://github.com/dutykh/LeeWick>
+The lapse function f(x) = 1 − h(x)/x of the Lee–Wick black hole, computed from its closed form, with the extremal
+configurations found as the assemblers find them, by solving f = 0 and f′ = 0 together. Panel (a), for q = 2, shows the
+three values of α at which f has a double root (circles): at α = 0.69098 and α = 4.04733 the double root is the event
+horizon (x_e = 1.76785 and 1.06972), an extremal black hole of type B; at α = 5.18635 it lies inside the event horizon
+(x_e = 0.62987), which stays simple at x_h = 1.04013, where the dotted curve crosses zero, an extremal black hole of
+type A. Panel (b), for q = 0.1, shows no horizon at α = 4.1, a double root at the extremal value α = 5.08671
+(x_e = 0.65978), and two horizons at α = 6.1.
 
-## Reference
+LeeWick holds the Maple and MATLAB material of a study of the quasinormal modes of Lee–Wick black holes: the frequencies
+at which massless scalar (s = 0), electromagnetic (s = 1) and vector-type gravitational (s = 2) perturbations of these
+black holes ring and decay, in the non-extremal case and in the two extremal cases of types A and B. The radial
+equation is compactified onto the interval −1 ⩽ y ⩽ 1, the quasinormal boundary conditions are built into a
+factorisation of its solution, and the regular part is expanded in Chebyshev polynomials and collocated at the Chebyshev
+roots. Three Maple procedures assemble, in multiprecision arithmetic, the matrices of the resulting quadratic eigenvalue
+problem, which MATLAB solves with `polyeig`; three Maple worksheets carry the derivations. The method and the results
+are those of the article by Davide Batic, Denys Dutykh and Breno L. Giacchini in Physical Review D (2024), cited below.
 
-D. Batic, D. Dutykh & B. L. Giacchini, *A Unified Spectral Approach for Quasinormal
-Modes of Lee-Wick Black Holes*, **Physical Review D 110**, 084032 (2024).
+## The problem
 
-* Published version: <https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.084032>
-* Preprint: <https://arxiv.org/abs/2410.13245>
+The black hole is static and spherically symmetric, ds² = −f dt² + dr²/f + r² dΩ², and its lapse function, written in
+the rescaled radius x = r/(2M), is
 
-> In this paper, we undertake a comprehensive examination of quasinormal modes linked
-> to Lee-Wick black holes, delving into scalar, electromagnetic, and gravitational
-> perturbations using the spectral method. Such black holes can display a rich
-> structure of horizons, and our analysis considers all the representative scenarios,
-> including extremal and non-extremal situations. In particular, we show that purely
-> imaginary quasinormal modes emerge for extremal and near-extremal configurations,
-> suggesting a rapid return to equilibrium without oscillation.
+```text
+f(x) = 1 − h(x)/x,
 
-## Quasi-Normal Modes Hall of Fame
+h(x) = 1 − e^(−αx) [ (1 + α(1 + q²) x/2) cos(αqx) + (1 − q² + α(1 + q²) x) sin(αqx)/(2q) ],
 
-This work is part of the [Quasi-Normal Modes Hall of Fame](https://qnms.denys-dutykh.com/),
-a curated collection of studies on the "celestial music" of compact objects: the
-characteristic ringing frequencies of black holes and wormholes in general relativity and
-in its modified and quantum-corrected extensions. The collection is maintained by
-Dr. Davide Batic and Dr. Denys Dutykh (Mathematics Department, Khalifa University of
-Science and Technology, Abu Dhabi, UAE) and gathers, for each published manuscript, the
-preprint, the journal reference and, where available, the accompanying computational
-material. The present repository is the computational entry associated with the Lee-Wick
-paper listed there, and the Hall of Fame is the place to look for the companion codes of
-the neighbouring spacetimes treated with the same spectral machinery.
-
-## Authors
-
-| Author | Affiliation |
-| :--- | :--- |
-| Dr. Davide Batic | Khalifa University of Science and Technology, Abu Dhabi, UAE |
-| Dr. Denys Dutykh | Khalifa University of Science and Technology, Abu Dhabi, UAE |
-| Dr. Breno L. Giacchini | Charles University, Prague, Czech Republic |
-
-## Physical and numerical setting
-
-The Lee-Wick black hole is described by the lapse function
-
-```
-f(x) = 1 - h(x)/x,
-h(x) = 1 - e^(-a x) [ (1 + a(q^2 + 1) x / 2) cos(q a x)
-                      + (1 - q^2 + a(q^2 + 1) x) sin(q a x) / (2 q) ],
+α = 2Ma,    q = b/a,
 ```
 
-where `x` is the dimensionless radial coordinate, `a` (also written `alpha`) is the
-dimensionless mass parameter and `q` is the ratio fixing the complex-conjugate pair of
-Lee-Wick masses. Depending on `(q, a)`, the geometry may possess two horizons, a single
-degenerate horizon, or no horizon at all.
+where M is the mass of the source and m = a + ib is the Lee–Wick mass. Depending on q and α, f has no zero, one double
+zero, two simple zeros, two simple zeros and a double one, or four simple zeros: Table I of the article lists the cases.
+For the values q = 0.1, 0.5 and 1 of the article a single extremal value α_e separates the geometries without horizon
+from those with two; for q = 2 there are three extremal values, two of type B, where the event horizon itself is
+degenerate, and one of type A, where two inner horizons merge inside a simple event horizon.
 
-Master perturbation equations for spin `s = 0, 1, 2` are compactified onto `y` in
-`[-1, 1]`, with the horizon and spatial infinity mapped to the interval endpoints, and
-the QNM boundary conditions built into the ansatz. The field is expanded in Chebyshev
-polynomials of the first kind,
+With the time dependence e^(−iωt) and spherical harmonics of degree ℓ ⩾ s, each perturbation obeys
 
-```
-F(y) = sum_{j=0}^{n-1} a_j T_j(y),
+```text
+f d/dr( f dψ/dr ) + [ ω² − U(r) ] ψ = 0,      U(r) = f(r) [ ε f′(r)/r + ℓ(ℓ + 1)/r² ],      ε = 1 − s²,
 ```
 
-and the equation is collocated at the Chebyshev roots
-`y_i = cos((2i - 1) pi / (2n))`, `i = 1, ..., n`. Since the frequency `Omega` enters the
-master equation quadratically, collocation yields a quadratic eigenvalue problem
+with ψ ingoing at the event horizon x_h and outgoing at infinity; the dimensionless frequency is Ω = Mω, and Im Ω < 0
+for a damped mode. The map y = 1 − 2x_h/x sends the event horizon to y = −1 and infinity to y = +1. After the
+asymptotic behaviour at both ends has been factored out, the regular part of ψ is expanded as a(0) T_0(y) + … +
+a(n−1) T_(n−1)(y) and the equation is collocated at the n roots y_i = cos((2i − 1)π/(2n)), which gives
 
+```text
+( M0 + i Ω M1 + Ω² M2 ) a = 0,
 ```
-( M0 + Omega M1 + Omega^2 M2 ) a = 0,
+
+with three real n × n matrices. The frequency enters the linear term multiplied by i, so the matrix `M1` exported by
+Maple is multiplied by `1i` when the problem is solved. A degenerate event horizon (type B) needs its own
+factorisation, written with an auxiliary function η(y) of the compactified variable (section II B of the article); the
+type A black hole, whose event horizon is simple, uses the non-extremal formulation.
+
+## Quick start
+
+Each procedure writes its matrices into the folder `data/` of the path it is given, which must exist. In a terminal,
+from the folder of the repository:
+
+```bash
+mkdir -p data
 ```
 
-whose eigenvalues are the quasinormal frequencies. The matrices are assembled in Maple
-with arbitrary-precision arithmetic and exported in MATLAB format; the polynomial
-eigenvalue problem is then solved in MATLAB with `polyeig`.
-
-## Repository contents
-
-### Maple worksheets (derivations)
-
-| File | Content |
-| :--- | :--- |
-| `00-f(x).mw` | Analysis of the metric function `f(x)`: horizon structure, critical parameter values, and the degenerate (extremal) configuration in the `(q, alpha)` plane. |
-| `01-NONEXTREME CASE-SUPPLEMENTAL MATERIAL.mw` | Full derivation for a non-degenerate horizon: change of variables, asymptotic behaviour of the solution at both endpoints, and the operator coefficients entering `M0`, `M1`, `M2`. |
-| `LW-EXTREME CASE-SUPPLEMENTAL MATERIAL.mw` | Same derivation for the extremal (degenerate horizon) case, where the surface gravity vanishes and the standard tortoise mapping degenerates. Introduces the adapted coordinate `eta(y)` and the near-horizon coefficients `h1` and `a`. |
-
-### Maple procedures (matrix assembly)
-
-All three files define a procedure `MatrixAssembler` that builds `M0`, `M1`, `M2` and
-writes them as MATLAB ASCII matrices.
-
-| File | Case | Signature |
-| :--- | :--- | :--- |
-| `matrixassemblerNonExtreme.mpl` | Non-extremal black hole; the horizon `xh` is obtained from `x = h(x)` for user-supplied `(q, a)`. | `MatrixAssembler(d, n, s, L, q, a, p)` |
-| `matrixassemblerTypeA.mpl` | Type A extremal configuration: the critical pair `(x_e, alpha)` is found from `f = 0`, `df/dx = 0`, and the perturbation problem is posed at the outer non-degenerate horizon `xh`. | `MatrixAssembler(d, n, s, L, q, p)` |
-| `matrixassemblerTypeB.mpl` | Type B extremal configuration: the problem is posed at the degenerate horizon `x_e` itself, using the adapted coordinate `eta(y)`. | `MatrixAssembler(d, n, s, L, q, p)` |
-
-Arguments:
-
-* `d` : number of digits used in the computation (Maple `Digits`);
-* `n` : number of Chebyshev modes, equal to the size of the assembled matrices;
-* `s` : spin of the perturbation, `0` (scalar), `1` (electromagnetic) or `2` (gravitational);
-* `L` : angular momentum multipole index, with `L >= s`;
-* `q` : ratio of the Lee-Wick masses;
-* `a` : dimensionless mass parameter (non-extremal case only; in the extremal cases it is determined by the degeneracy conditions);
-* `p` : path to the directory containing the output subdirectory `data/`.
-
-In the Type A file the computed critical values are checked against the reference values
-`x_e = 0.62987`, `alpha = 5.18635` and `xh = 1.040133223`, and the procedure aborts if the
-solver drifts away from them.
-
-## Usage
-
-### 1. Assemble the matrices in Maple
-
-Create the output subdirectory `data/` first, then, from a Maple session,
+Then, in Maple, read the procedure of the case and call it once per resolution (here a scalar perturbation, ℓ = 1,
+with 300 digits, as in the article):
 
 ```maple
 read "matrixassemblerNonExtreme.mpl":
-MatrixAssembler(30, 60, 2, 2, 0.5, 1.0, "/path/to/LeeWick"):
-```
-
-which produces `data/M0_60.mat`, `data/M1_60.mat` and `data/M2_60.mat`. The extremal
-cases are invoked in the same way, without the argument `a`:
-
-```maple
+MatrixAssembler(300, 200, 0, 1, 0.5, 4.0, "/absolute/path/to/LeeWick"):   # q = 0.5, alpha = 4
+read "matrixassemblerTypeA.mpl":
+MatrixAssembler(300, 200, 0, 1, 2.0, "/absolute/path/to/LeeWick"):        # q = 2 only
 read "matrixassemblerTypeB.mpl":
-MatrixAssembler(30, 60, 2, 2, 0.5, "/path/to/LeeWick"):
+MatrixAssembler(300, 200, 0, 1, 0.1, "/absolute/path/to/LeeWick"):        # q = 0.1 as distributed
 ```
 
-A large value of `d` is advisable: the collocation matrices of a spectral discretization
-become severely ill-conditioned as `n` grows, and the accuracy of the high overtones
-depends directly on the working precision.
-
-### 2. Solve the quadratic eigenvalue problem in MATLAB
+Each call writes `data/M0_n.mat`, `data/M1_n.mat` and `data/M2_n.mat` in the ASCII format of MATLAB, n being the
+number of Chebyshev modes; since the names carry only n, each case is assembled and solved before the next one. The
+eigenvalue problem is then solved in MATLAB with the Advanpix Multiprecision Computing Toolbox, from the folder of the
+repository (the repository holds no MATLAB file, so these lines are the whole MATLAB side):
 
 ```matlab
-n  = 60;
-M0 = load(sprintf('data/M0_%d.mat', n));
-M1 = load(sprintf('data/M1_%d.mat', n));
-M2 = load(sprintf('data/M2_%d.mat', n));
-
-[~, Omega] = polyeig(M0, M1, M2);
-Omega = Omega(isfinite(Omega));
+addpath('/path/to/advanpix');                     % Multiprecision Computing Toolbox
+mp.Digits(300);
+n  = 200;
+M0 = mp.read(sprintf('data/M0_%d.mat', n));
+M1 = mp.read(sprintf('data/M1_%d.mat', n));
+M2 = mp.read(sprintf('data/M2_%d.mat', n));
+Omega = polyeig(M0, mp('1i')*M1, M2);             % (M0 + i Omega M1 + Omega^2 M2) a = 0
+plot(real(Omega), imag(Omega), '.')
 ```
 
-The spectrum returned by `polyeig` contains both the physical quasinormal frequencies and
-spurious eigenvalues introduced by the discretization. The physical modes are identified
-by repeating the computation for two or more values of `n` and retaining the eigenvalues
-that remain stable to the requested number of digits.
+The 2n eigenvalues mix the quasinormal frequencies with artefacts of the truncation. The frequencies are those that stay
+in place when n changes: the article overlaps the spectra of n = 200, 250 and 300 and computes with 300 digits.
 
-## Software requirements
+## The three procedures
 
-* Maple (TM) 18 or later, for the worksheets and the assembly procedures;
-* MATLAB (TM), for the polynomial eigenvalue solver `polyeig`.
+All three define a procedure named `MatrixAssembler` and stop with an error if ℓ < s.
 
-## Citation
+| File | Case | Call |
+|---|---|---|
+| `matrixassemblerNonExtreme.mpl` | non-extremal black hole, and any simple event horizon | `MatrixAssembler(d, n, s, L, q, a, p)` |
+| `matrixassemblerTypeA.mpl` | extremal black hole of type A | `MatrixAssembler(d, n, s, L, q, p)` |
+| `matrixassemblerTypeB.mpl` | extremal black hole of type B | `MatrixAssembler(d, n, s, L, q, p)` |
+
+The arguments are the number of digits `d` of the computation, the number of Chebyshev modes `n` (the size of the
+matrices), the spin `s` (0, 1 or 2), the multipole `L` (that is ℓ), the ratio `q`, the parameter `a` (that is α,
+for the non-extremal procedure only) and the path `p` of the folder that holds `data/`. The non-extremal procedure finds
+the event horizon as the root of x = h(x) that `fsolve` reaches from x = 2. The two extremal procedures find the double
+root x_e and the extremal value of α by solving f = 0 and f′ = 0 together, within search intervals written in the
+files. The type A procedure searches 0.1 ⩽ x_e ⩽ 1 and 5 ⩽ α ⩽ 5.5, then the event horizon in 1 ⩽ x_h ⩽ 1.5, and
+stops unless it finds the values of q = 2 (x_e = 0.62987, α = 5.18635, x_h = 1.040133223, to 10⁻⁴): it serves q = 2
+only. The type B procedure searches 0.5 ⩽ x_e ⩽ 0.8 and 4.9 ⩽ α ⩽ 5.5, which encloses the extremal black hole of
+q = 0.1 (x_e = 0.65978, α = 5.08671); the other type B cases of the article (q = 0.5 and 1, and q = 2 at α = 0.69098 or
+4.04733) need these intervals edited to enclose their double root, given in Table I of the article. For q = 2 the
+distributed intervals enclose the inner double root of the type A black hole, which is not an event horizon.
+
+## Contents
+
+| File | Content |
+|---|---|
+| `00-f(x).mw` | Maple worksheet: the lapse function f(x), its zeros and the extremal configurations in the plane of q and α |
+| `01-NONEXTREME CASE-SUPPLEMENTAL MATERIAL.mw` | Maple worksheet: the derivation for a simple event horizon (non-extremal and type A): change of variables, asymptotic behaviour at both ends, coefficients of the collocated equation |
+| `LW-EXTREME CASE-SUPPLEMENTAL MATERIAL.mw` | Maple worksheet: the same derivation for a degenerate event horizon (type B), with the function η(y) |
+| `matrixassembler*.mpl` | the three Maple procedures described above |
+| `docs/figures/` | the script `plot_readme_figure.py` that draws the figure of this page from the closed form of f, with the style file beside it |
+
+## Requirements
+
+Maple 18 or later for the worksheets, which are saved by Maple 18, and for the procedures, which use only
+`LinearAlgebra`, `ChebyshevT`, `fsolve` and `ExportMatrix`. MATLAB with the Advanpix Multiprecision Computing Toolbox
+(a commercial toolbox) for the eigenvalue problem: the article computes with 300 digits and reports that in double
+precision the spectra are distorted and inaccurate beyond the first few modes. The figure of this page needs Python 3
+with NumPy, SciPy and Matplotlib, and is redrawn from `docs/figures/` by `python3 plot_readme_figure.py`.
+
+## How to cite
+
+If you use this code, please cite the article:
+
+D. Batic, D. Dutykh and B. L. Giacchini, Unified spectral approach for quasinormal modes of Lee–Wick black holes,
+Physical Review D 110, 084032 (2024).
+
+https://doi.org/10.1103/PhysRevD.110.084032
 
 ```bibtex
-@article{Batic2024,
-  author  = {Batic, Davide and Dutykh, Denys and Giacchini, Breno L.},
-  title   = {A Unified Spectral Approach for Quasinormal Modes of {L}ee-{W}ick Black Holes},
+@article{Batic2024b,
+  author = {Batic, Davide and Dutykh, Denys and Giacchini, Breno L.},
+  title = {Unified Spectral Approach for Quasinormal Modes of {{Lee-Wick}} Black Holes},
   journal = {Physical Review D},
-  volume  = {110},
-  number  = {8},
-  pages   = {084032},
-  year    = {2024},
-  doi     = {10.1103/PhysRevD.110.084032},
-  eprint  = {2410.13245},
-  archivePrefix = {arXiv},
-  primaryClass  = {gr-qc}
+  year = 2024,
+  month = oct,
+  volume = {110},
+  number = {8},
+  pages = {084032},
+  doi = {10.1103/PhysRevD.110.084032},
+  eprint = {2410.13245},
+  archiveprefix = {arXiv}
 }
 ```
 
-## License
+The button "Cite this repository" in the right-hand column of this page gives the same reference, read from
+`CITATION.cff`. A free copy of the article is on arXiv:
 
-Distributed under the GNU Lesser General Public License v2.1. See [`LICENSE`](LICENSE).
+https://arxiv.org/abs/2410.13245
 
-**NB**: Please acknowledge this work if you use these codes.
+## Licence
+
+GNU Lesser General Public License, version 2.1 (see `LICENSE`).
+
+## Authors
+
+Davide Batic and Denys Dutykh (Mathematics Department, Khalifa University of Science and Technology, Abu Dhabi) and
+Breno L. Giacchini (Institute of Theoretical Physics, Charles University, Prague). The article is listed, with the other
+studies of quasinormal modes of the same group, in the [Quasi-Normal Modes Hall of Fame](https://qnms.denys-dutykh.com/).
+
+https://www.denys-dutykh.com/
