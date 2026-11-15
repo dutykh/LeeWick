@@ -141,6 +141,13 @@ Maple 18 or later for the worksheets, which are saved by Maple 18, and for the p
 precision the spectra are distorted and inaccurate beyond the first few modes. The figure of this page needs Python 3
 with NumPy, SciPy and Matplotlib, and is redrawn from `docs/figures/` by `python3 plot_readme_figure.py`.
 
+## A note on the article
+
+Table I of the article prints the third extremal value of α for q = 2 as α_e,3 = 5.18633. The double root of f lies at
+α_e,3 = 5.186353135 (with x_e = 0.62987), that is 5.18635 to five decimals, the value that the caption of Fig. 1 and the
+results of the type A black hole use. The type A procedure computes this value itself, by solving f = 0 and f′ = 0, and
+compares it with 5.18635, so that the computations and the results of the article are not affected.
+
 ## How to cite
 
 If you use this code, please cite the article:
